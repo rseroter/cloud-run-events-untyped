@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CloudNative.CloudEvents;
+using System.Text.Json;
 
 namespace core_sample_api.Controllers
 {
@@ -21,10 +22,14 @@ namespace core_sample_api.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] CloudEvent receivedEvent)
+        public void Post(object receivedEvent)
         {
+            //[FromBody] CloudEvent
+
+            string s = JsonSerializer.Serialize(receivedEvent);
+
             Console.WriteLine("POST endpoint called");
-            Console.WriteLine("Data: " + receivedEvent.Data.ToString());
+            Console.WriteLine("Data: " + s);
         }
     }
 }
