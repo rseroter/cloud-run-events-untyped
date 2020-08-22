@@ -26,12 +26,14 @@ namespace cloud_run_events_untyped
             {
                 endpoints.MapGet("/", async context =>
                 {
+                    Console.WriteLine("GET endpoint called");
                     var target = Environment.GetEnvironmentVariable("TARGET") ?? "World";
                     await context.Response.WriteAsync($"Hello {target}!\n");
                 });
 
                 endpoints.MapPost("/", async context =>
                 {
+                    Console.WriteLine("POST endpoint called");
                     var source = context.Request.Headers["ce-source"];
                     await context.Response.WriteAsync($"source: {source}\n");
                 });
