@@ -35,8 +35,10 @@ namespace core_sample_api.Controllers
                 if(root.TryGetProperty("message", out JsonElement msg)) {
                     Console.WriteLine("Custom event detected");
 
-                    JsonElement data = msg.GetProperty("data");
-                    Console.WriteLine("Data value is: " + data.GetString());
+                    JsonElement rawData = msg.GetProperty("data");
+                    //decode
+                    string data = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(rawData.GetString()));
+                    Console.WriteLine("Data value is: " + data);
                 }
             }
 
