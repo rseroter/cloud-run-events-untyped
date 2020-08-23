@@ -24,7 +24,7 @@ namespace core_sample_api.Controllers
         [HttpPost]
         public void Post(object receivedEvent)
         {
-            //[FromBody] CloudEvent
+            Console.WriteLine("POST endpoint called");
 
             string s = JsonSerializer.Serialize(receivedEvent);
 
@@ -34,12 +34,15 @@ namespace core_sample_api.Controllers
                 JsonElement root = d.RootElement;
                 if(root.TryGetProperty("message", out JsonElement msg)) {
                     Console.WriteLine("Custom event detected");
+
+                    JsonElement data = msg.GetProperty("data");
+                    Console.WriteLine("Data value is: " + data.GetString());
                 }
             }
 
 
 
-            Console.WriteLine("POST endpoint called");
+            
             Console.WriteLine("Data: " + s);
         }
     }
