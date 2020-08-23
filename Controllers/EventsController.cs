@@ -28,6 +28,17 @@ namespace core_sample_api.Controllers
 
             string s = JsonSerializer.Serialize(receivedEvent);
 
+            //see if custom event with "message" root property, and has encoded "body" property
+            using(JsonDocument d = JsonDocument.Parse(s)){
+
+                JsonElement root = d.RootElement;
+                if(root.TryGetProperty("message", out JsonElement msg)) {
+                    Console.WriteLine("Custom event detected");
+                }
+            }
+
+
+
             Console.WriteLine("POST endpoint called");
             Console.WriteLine("Data: " + s);
         }
