@@ -35,7 +35,7 @@ namespace core_sample_api.Controllers
                     Console.WriteLine("Custom event detected");
 
                     JsonElement rawData = msg.GetProperty("data");
-                    //decode
+                    //decode payload
                     string data = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(rawData.GetString()));
                     Console.WriteLine("Data value is: " + data);
                 }
