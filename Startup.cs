@@ -15,7 +15,6 @@ namespace cloud_run_events_untyped
 {
     public class Startup
     {
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
