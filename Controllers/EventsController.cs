@@ -13,7 +13,6 @@ namespace core_sample_api.Controllers
     [Route("")]
     public class Eventsontroller : ControllerBase
     {
-
         private readonly ILogger<Eventsontroller> _logger;
 
         public Eventsontroller(ILogger<Eventsontroller> logger)
@@ -42,9 +41,6 @@ namespace core_sample_api.Controllers
                 }
             }
 
-
-
-            
             Console.WriteLine("Data: " + s);
         }
     }
